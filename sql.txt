@@ -1,0 +1,99 @@
+
+// this file contains the schema needed to be created in Oracle DB in case the data needs to be stored in db
+
+create table user_accounts(email varchar2(400) primary key, password varchar2(400) NOT NULL, name varchar2(400));
+
+create table gender_Details(id number(1) primary key, type varchar2(200));
+
+create table user_details( user_email varchar2(400) not null, gender_id number(1) not null, age number(3) NOT NULL,
+constraint fk_email FOREIGN KEY (user_email) references user_accounts(email),
+constraint fk_gender FOREIGN KEY (gender_id) references gender_Details(id)
+);
+
+create table interests(id number(6) primary key, name varchar2(400));
+
+create table user_interests(user_email varchar2(400) NOT NULL, interests_id number(6),
+constraint fk__user_interests_email FOREIGN KEY (user_email) references user_accounts(email),
+constraint fk_user_interests_interests FOREIGN KEY (interests_id) references interests(id)
+);
+
+
+insert into user_accounts values ('USERA@gmail.com', 'userA', 'USERA');
+
+insert into user_accounts values ('USERB@gmail.com', 'userb', 'USERB');
+
+insert into user_accounts values ('USERC@gmail.com', 'userC', 'USERC');
+
+insert into user_accounts values ('USERD@gmail.com', 'userD', 'USERD');
+
+insert into user_accounts values ('USERE@gmail.com', 'userE', 'USERE');
+
+
+
+insert into gender_details values (1, 'MALE');
+
+insert into gender_details values (2, 'FEMALE');
+
+insert into user_details values ('USERA@gmail.com',2, 25);
+
+insert into user_details values ('USERB@gmail.com',1,27);
+
+insert into user_details values ('USERC@gmail.com',1, 26);
+
+insert into user_details values ('USERD@gmail.com',2, 24);
+
+insert into user_details values ('USERE@gmail.com',2, 32);
+
+
+insert into interests values (1, 'Cricket');
+
+insert into interests values (2, 'Tennis');
+
+insert into interests values (3, 'Football');
+
+insert into interests values (4, 'Movies');
+
+insert into interests values (5, 'Badminton');
+
+insert into user_interests values ('USERA@gmail.com', 1);
+
+insert into user_interests values ('USERA@gmail.com', 2);
+
+insert into user_interests values ('USERB@gmail.com', 1);
+
+insert into user_interests values ('USERB@gmail.com', 3);
+
+insert into user_interests values ('USERB@gmail.com', 4);
+
+insert into user_interests values ('USERC@gmail.com', 1);
+
+insert into user_interests values ('USERC@gmail.com', 2);
+
+insert into user_interests values ('USERC@gmail.com', 3);
+
+insert into user_interests values ('USERC@gmail.com', 4);
+
+insert into user_interests values ('USERD@gmail.com', 2);
+
+insert into user_interests values ('USERD@gmail.com', 3);
+
+insert into user_interests values ('USERD@gmail.com', 5);
+
+insert into user_interests values ('USERE@gmail.com', 1);
+
+insert into user_interests values ('USERE@gmail.com', 3);
+
+insert into user_interests values ('USERE@gmail.com', 4);
+
+insert into user_interests values ('USERE@gmail.com', 5);
+
+
+select ua.name user_name, age, type, i.name interests from user_accounts ua, gender_details gd, user_details ud, interests i, user_interests ui
+   where ua.email = ud.user_email and ua.email = ui.user_email and gd.id = ud.gender_id and  ui.interests_id = i.id;
+
+
+drop table gender_details;
+
+drop table user_details;
+
+DROP TABLE USER_INTEReSTS;
