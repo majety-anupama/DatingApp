@@ -16,9 +16,9 @@ DatingRecommendationApp
 
 # Inputs accepted to DatingRecommendationApp when run
 
-1. Number of users in its database/cache
+1. Number of users in its database/cache \n
  Ex: 5
-2. Users of the database in the format: <name>-<age>-<Male/Female>-<interests comma separated Cricket/Tennis/Badminton/Football>
+2. Users of the database in the format: <name>-<age>-<Male/Female>-<interests comma separated Cricket/Tennis/Badminton/Football> <p>
   Ex: UserA-25-Female-Cricket,Tennis
       UserB-27-Male-Cricket,Football,Movies
       UserC-26-Male-C=Movies,Tennis,Football,Cricket
