@@ -51,5 +51,5 @@ java -jar DatingApp.jar
 
 # Features which can be extended in future
 1. In case if a user is already matched with another user, then we can remove these users from the next searches
-2. Ability to pick data from database. Schema file is included in the repository
+2. Ability to store details of users in database is currently not done due to lack of time. But the schema files needs are available. 
 
